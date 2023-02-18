@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://www.solar-panel-system.com/sitemap.xml
+Sitemap: http://turkishsourcingagency.vercel.app/sitemap.xml
