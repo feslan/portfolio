@@ -23,13 +23,10 @@
     />
     <meta
       name="keywords"
-      content="Towels,towel,cotton,turkish,supplier,Manufacturer,organic,organic cotton,GOTS Certified,OEKO-Tex,textile,polyester,apparel,bath,bath towels,fabrics,amazon fba,etsy,dropshipping,ebay,ebay,organic,bath towel"
+      content="Towels,towel,turkish towels bulk,bulk turkish towels,turkish towels bed bath and beyond,white turkish towels,turkish towels set,wholesale turkish towels,turkish towels wholesale,turkish towels amazon,best turkish towels,what are turkish towels,cotton,turkish,turkish towels,supplier,Manufacturer,organic,organic cotton,GOTS Certified,OEKO-Tex,textile,polyester,apparel,bath,bath towels,fabrics,amazon fba,etsy,dropshipping,ebay,ebay,organic,bath towel"
     />
 
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
-    />
+
 
     <link
       href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap"
@@ -41,6 +38,8 @@
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
+    <link rel="stylesheet" href="./style.css" />
+
 
     <style>
       * {
@@ -166,11 +165,19 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
     <!--Nav-->
-    <nav id="header" class="w-full z-30 top-0 border-b border-[#e0e0e0]">
+    <nav
+      x-data="{ open: false }"
+      id="header"
+      class="w-full z-30 top-0 border-b border-[#e0e0e0] select-none"
+    >
       <div
         class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3"
       >
-        <label for="menu-toggle" class="cursor-pointer md:hidden block">
+        <label
+          @click="open = !open"
+          for="menu-toggle"
+          class="cursor-pointer md:hidden block"
+        >
           <svg
             class="fill-current text-gray-900"
             xmlns="http://www.w3.org/2000/svg"
@@ -184,50 +191,25 @@
         </label>
         <input class="hidden" type="checkbox" id="menu-toggle" />
 
-        <div
-          class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1"
-          id="menu"
-        >
-          <nav>
-            <ul
-              class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0"
-            >
-              <li>
-                <a
-                  class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-                  href="#store"
-                  >Shop</a
-                >
-              </li>
-              <li>
-                <a
-                  class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-                  href="about.html"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  class="flex md:hidden no-underline hover:text-black hover:underline py-2 px-4"
-                  href="#"
-                  >Blog</a
-                >
-              </li>
-              <li>
-                <a
-                  class="flex md:hidden no-underline hover:text-black hover:underline py-2 px-4"
-                  href="about.html"
-                  >Services</a
-                >
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <div class="order-1 md:order-1 flex items-center" id="nav-content">
+          <a
+            class="hidden md:flex no-underline text-black hover:underline hover:text-black"
+            href="https://turkishsourcingagency.vercel.app/#store"
+          >
+            Store
+          </a>
 
-        <div class="order-1 md:order-2">
+          <a
+            class="pl-3 hidden md:flex no-underline text-black hover:underline hover:text-black"
+            href="https://turkishsourcingagency.vercel.app/#about"
+          >
+            About
+          </a>
+        </div>
+        <div class="order-2 md:order-2">
           <a
             class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl"
-            href="#"
+            href="https://turkishsourcingagency.vercel.app"
           >
             <svg
               class="fill-current text-gray-800 mr-2"
@@ -244,49 +226,78 @@
           </a>
         </div>
 
-        <div class="order-2 md:order-3 flex items-center" id="nav-content">
-          <a class="hidden md:flex no-underline hover:text-black" href="#">
-            Blog
+        <div class="order-3 md:order-3 flex items-center" id="nav-content">
+          <a
+            class="hidden md:flex no-underline text-black hover:underline hover:text-black"
+            href="https://turkishsourcingagency.vercel.app/blogs"
+          >
+            Blogs
           </a>
 
-          <a class="pl-3 hidden md:flex no-underline hover:text-black" href="#">
+          <a
+            class="pl-3 hidden md:flex no-underline text-black hover:underline hover:text-black"
+            href="https://turkishsourcingagency.vercel.app/#services"
+          >
             Services
           </a>
         </div>
       </div>
+      <div
+        :class="open ? '' : 'hidden'"
+        class="md:items-center md:w-auto w-full order-3 md:order-1"
+        id="menu"
+      >
+        <nav>
+          <ul
+            class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0"
+          >
+            <li>
+              <a
+                class="inline-block no-underline text-black hover:text-black hover:underline py-2 px-4"
+                href="#store"
+                >Shop</a
+              >
+            </li>
+            <li>
+              <a
+                class="inline-block no-underline text-black hover:text-black hover:underline py-2 px-4"
+                href="https://turkishsourcingagency.vercel.app/#about"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                class="flex md:hidden no-underline text-black hover:text-black hover:underline py-2 px-4"
+                href="https://turkishsourcingagency.vercel.app/blogs"
+                >Blogs</a
+              >
+            </li>
+            <li>
+              <a
+                class="flex md:hidden no-underline text-black hover:text-black hover:underline py-2 px-4"
+                href="https://turkishsourcingagency.vercel.app/#about"
+                >Services</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
     </nav>
 
-    <!--	 
 
-
-<section class="w-full mx-auto bg-nordic-gray-light flex pt-12 md:pt-0 md:items-center bg-cover bg-right" style="max-width:1600px; height: 32rem; background-image: url('https://images.unsplash.com/photo-1422190441165-ec2956dc9ecc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80');">
-
-	<div class="container mx-auto">
-
-		<div class="flex flex-col w-full lg:w-1/2 justify-center items-start  px-6 tracking-wide">
-			<h1 class="text-black text-2xl my-4">Stripy Zig Zag Jigsaw Pillow and Duvet Set</h1>
-			<a class="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">products</a>
-
-		</div>
-
-	  </div>
-
-</section>
-
--->
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
       <div class="flex flex-col md:flex-row -mx-4">
         <div class="md:flex-1 px-4">
           <div x-data="{ image: 1 }" x-cloak>
             <div
-              class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4"
+              class="h-[30rem] rounded-lg bg-gray-100 mb-4"
               style="height: 30rem"
             >
               <div
-                x-show="image === 1"
+              :class="image === 1 ? '' : 'hidden'"
                 style="height: 30rem"
-                class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
+                class="h-[30rem]  rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
               >
                 <img
                   class="object-cover w-full h-full rounded-md"
@@ -297,8 +308,8 @@
 
               <div
                 style="height: 30rem"
-                x-show="image === 2"
-                class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
+                :class="image === 2 ? '' : 'hidden'"
+                class="h-[30rem] rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
               >
                 <img
                   class="object-cover w-full h-full rounded-md"
@@ -309,8 +320,8 @@
 
               <div
                 style="height: 30rem"
-                x-show="image === 3"
-                class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
+                :class="image === 3 ? '' : 'hidden'"
+                class="h-[30rem] rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
               >
                 <img
                   class="object-cover w-full h-full rounded-md object-top"
@@ -321,8 +332,8 @@
 
               <div
                 style="height: 30rem"
-                x-show="image === 4"
-                class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
+                :class="image === 4 ? '' : 'hidden'"
+                class="h-[30rem] rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
               >
                 <img
                   class="object-cover w-full h-full rounded-md"
@@ -333,7 +344,7 @@
             </div>
 
             <div class="flex -mx-2 mb-4">
-              <div class="flex flex-row gap-x-2 px-2">
+              <div class="flex flex-row w-full gap-x-2 px-2">
                 <button
                   x-on:click="image = 1"
                   :class="{ 'border-2 border-black': image === 1 }"
@@ -468,7 +479,7 @@
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>*</option>
+                <option>wholesale</option>
               </select>
 
               <svg
@@ -498,7 +509,30 @@
         </div>
       </div>
     </div>
-
+    <article class="text-white flex select-none">
+      <strong class="text-white flex select-none">turkish towels</strong>
+      <strong class="text-white flex select-none">best turkish towels</strong>
+      <strong class="text-white flex select-none">turkish towels amazon</strong>
+      <strong class="text-white flex select-none">what are turkish towels</strong>
+      <strong class="text-white flex select-none">turkish towels set</strong>
+      <strong class="text-white flex select-none">wholesale turkish towels</strong>
+      <strong class="text-white flex select-none">turkish towels wholesale</strong>
+      <strong class="text-white flex select-none">turkish towels bulk</strong>
+      <strong class="text-white flex select-none">bulk turkish towels</strong>
+      <strong class="text-white flex select-none">turkish towels bed bath and beyond</strong>
+      <strong class="text-white flex select-none">white turkish towels</strong>
+      <strong class="text-white flex select-none">how to wash turkish towels</strong>
+      <strong class="text-white flex select-none">turkish towels white</strong>
+      <strong class="text-white flex select-none">pros and cons of turkish towels</strong>
+      <strong class="text-white flex select-none">100 cotton turkish towels</strong>
+      <strong class="text-white flex select-none">organic turkish towels</strong>
+      <strong class="text-white flex select-none">etsy turkish towels</strong>
+      <strong class="text-white flex select-none">classic turkish towels</strong>
+      <strong class="text-white flex select-none">smyrna turkish towels</strong>
+      <strong class="text-white flex select-none">turkish towels company</strong>
+      <strong class="text-white flex select-none">linen turkish towels</strong>
+      <strong class="text-white flex select-none">turkish towels sale</strong>
+    </article>
     <footer class="container mx-auto bg-white py-8 border-t border-gray-400">
       <div class="container flex px-3 py-8">
         <div class="w-full mx-auto flex flex-wrap">
