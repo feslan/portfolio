@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://turkishsourcingagency.vercel.app/sitemap.xml
+Sitemap: http://rastexport.vercel.app/sitemap.xml
