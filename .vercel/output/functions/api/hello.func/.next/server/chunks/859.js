@@ -2,7 +2,7 @@ exports.id = 859;
 exports.ids = [859];
 exports.modules = {
 
-/***/ 940:
+/***/ 2940:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -14,12 +14,12 @@ __webpack_unused_export__ = ({
 exports.Html = Html;
 exports.Main = Main;
 __webpack_unused_export__ = void 0;
-var _react = _interopRequireWildcard(__webpack_require__(689));
-var _constants = __webpack_require__(724);
-var _getPageFiles = __webpack_require__(140);
-var _htmlescape = __webpack_require__(716);
+var _react = _interopRequireWildcard(__webpack_require__(6689));
+var _constants = __webpack_require__(6724);
+var _getPageFiles = __webpack_require__(4140);
+var _htmlescape = __webpack_require__(9716);
 var _isError = _interopRequireDefault(__webpack_require__(676));
-var _htmlContext = __webpack_require__(743);
+var _htmlContext = __webpack_require__(8743);
 class Document extends _react.default.Component {
     /**
    * `getInitialProps` hook returns the context object with the addition of `renderPage`.
@@ -532,7 +532,7 @@ class Head extends _react.default.Component {
             content: "width=device-width,minimum-scale=1,initial-scale=1"
         }), !hasCanonicalRel && /*#__PURE__*/ _react.default.createElement("link", {
             rel: "canonical",
-            href: canonicalBase + (__webpack_require__(368).cleanAmpPath)(dangerousAsPath)
+            href: canonicalBase + (__webpack_require__(6368).cleanAmpPath)(dangerousAsPath)
         }), /*#__PURE__*/ _react.default.createElement("link", {
             rel: "preload",
             as: "script",
@@ -634,7 +634,7 @@ class NextScript extends _react.default.Component {
                 return (0, _htmlescape).htmlEscapeJsonString(data);
             }
             const bytes =  false ? 0 : Buffer.from(data).byteLength;
-            const prettyBytes = (__webpack_require__(955)/* ["default"] */ .Z);
+            const prettyBytes = (__webpack_require__(5955)/* ["default"] */ .Z);
             if (largePageDataBytes && bytes > largePageDataBytes) {
                 if (true) {
                     largePageDataWarnings.add(__NEXT_DATA__.page);
@@ -734,7 +734,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = isError;
 exports.getProperError = getProperError;
-var _isPlainObject = __webpack_require__(524);
+var _isPlainObject = __webpack_require__(8524);
 function isError(err) {
     return typeof err === "object" && err !== null && "name" in err && "message" in err;
 }
@@ -750,7 +750,7 @@ function getProperError(err) {
 
 /***/ }),
 
-/***/ 955:
+/***/ 5955:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -823,10 +823,10 @@ Formats the given number using `Number#toLocaleString`.
 
 /***/ }),
 
-/***/ 859:
+/***/ 6859:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__(940)
+module.exports = __webpack_require__(2940)
 
 
 /***/ })
