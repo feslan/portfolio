@@ -28,7 +28,7 @@ const LayoutWrapper = ({ children  })=>{
 
 /***/ }),
 
-/***/ 841:
+/***/ 114:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -136,7 +136,79 @@ const siteMetadata = {
     }
 };
 
+;// CONCATENATED MODULE: external "next/router"
+const router_namespaceObject = require("next/router");
+// EXTERNAL MODULE: ./node_modules/next/script.js
+var script = __webpack_require__(298);
+var script_default = /*#__PURE__*/__webpack_require__.n(script);
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__(689);
+;// CONCATENATED MODULE: ./components/GoogleAnalytics.tsx
+//components/GoogleAnalytics.tsx
+
+
+
+
+const TRACKING_ID = "G-TPSXZW65CS";
+const GoogleAnalytics = ()=>{
+    const router = (0,router_namespaceObject.useRouter)();
+    // 👇 send page views when users gets to the landing page
+    (0,external_react_.useEffect)(()=>{
+        if (!TRACKING_ID || router.isPreview) return;
+        gtag("config", TRACKING_ID, {
+            send_page_view: false
+        });
+        gtag("event", "page_view", {
+            page_path: window.location.pathname,
+            send_to: TRACKING_ID
+        });
+    }, []);
+    // 👇 send page views on route change
+    (0,external_react_.useEffect)(()=>{
+        const handleRouteChange = (url)=>{
+            if (!TRACKING_ID || router.isPreview) return;
+            // manually send page views
+            gtag("event", "page_view", {
+                page_path: url,
+                send_to: TRACKING_ID
+            });
+        };
+        router.events.on("routeChangeComplete", handleRouteChange);
+        router.events.on("hashChangeComplete", handleRouteChange);
+        return ()=>{
+            router.events.off("routeChangeComplete", handleRouteChange);
+            router.events.off("hashChangeComplete", handleRouteChange);
+        };
+    }, [
+        router.events,
+        router.isPreview
+    ]);
+    // 👇 prevent rendering scripts if there is no TRACKING_ID or if it's preview mode.
+    if (!TRACKING_ID || router.isPreview) {
+        return null;
+    }
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
+        children: [
+            /*#__PURE__*/ jsx_runtime_.jsx((script_default()), {
+                src: `https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`
+            }),
+            /*#__PURE__*/ jsx_runtime_.jsx((script_default()), {
+                id: "gtag-init",
+                dangerouslySetInnerHTML: {
+                    __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `
+                }
+            })
+        ]
+    });
+};
+/* harmony default export */ const components_GoogleAnalytics = (/*#__PURE__*/(0,external_react_.memo)(GoogleAnalytics));
+
 ;// CONCATENATED MODULE: ./pages/_app.tsx
+
 
 
 
@@ -154,6 +226,7 @@ function App({ Component , pageProps  }) {
                     name: "viewport"
                 })
             }),
+            /*#__PURE__*/ jsx_runtime_.jsx(components_GoogleAnalytics, {}),
             /*#__PURE__*/ jsx_runtime_.jsx(LayoutWrapper/* default */.Z, {
                 children: /*#__PURE__*/ jsx_runtime_.jsx(Component, {
                     ...pageProps
@@ -173,6 +246,30 @@ function App({ Component , pageProps  }) {
 
 /***/ }),
 
+/***/ 796:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/head-manager-context.js");
+
+/***/ }),
+
+/***/ 689:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("react");
+
+/***/ }),
+
+/***/ 405:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("react-dom");
+
+/***/ }),
+
 /***/ 997:
 /***/ ((module) => {
 
@@ -188,7 +285,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = (__webpack_exec__(841));
+var __webpack_exports__ = __webpack_require__.X(0, [210,298], () => (__webpack_exec__(114)));
 module.exports = __webpack_exports__;
 
 })();

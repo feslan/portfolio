@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import Head from "next/head";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import { siteMetadata } from "@/data/siteMetadata";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -11,8 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
-      {/*       <Analytics />
-       */}
+      <GoogleAnalytics />
       <LayoutWrapper>
         <Component {...pageProps} />
       </LayoutWrapper>
