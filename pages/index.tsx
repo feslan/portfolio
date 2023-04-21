@@ -16,7 +16,10 @@ export default function Home() {
       />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text  text-3xl font-extrabold leading-9 tracking-tight text-transparent sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          <h1 className="hidden bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text  text-3xl font-extrabold leading-9 tracking-tight text-transparent sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+            Ferhat Aslan
+          </h1>
+          <h1 className="animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-3xl  leading-9 tracking-tight text-transparent sm:text-4xl sm:leading-10 md:text-6xl md:leading-14   font-black ">
             Ferhat Aslan
           </h1>
           <div className="terminal hidden min-h-[100px] w-full flex-col items-start justify-start rounded-lg bg-slate-800">
@@ -36,13 +39,14 @@ export default function Home() {
               </div>
             </span>
           </div>
-          <p className="text-base leading-7 text-gray-500  dark:text-gray-400">
-            {/* {siteMetadata.description} */}A Software Developer who is
-            focused on Web and IoT based in Turkiye. I studied
-            Electric/Electronic Engineering and Civil Engineering. I have solid
-            experience/knowledge about Web Development, Angular, Typescript,
-            Javascript, HTML, CSS. I am technology enthusiast, loves to learn
-            new things.
+          <p className="text-base leading-7 text-black  dark:text-white">
+            {/* {siteMetadata.description} */}Hey 🖐, I am a Software Developer
+            who is focused on <span className="text-indigo-500">Web</span> and{" "}
+            <span className="text-orange-400">IoT. </span>
+            based in Turkiye🇹🇷. I studied Electric/Electronic Engineering and
+            Civil Engineering. I have solid experience/knowledge about Web
+            Development, Angular, Typescript, Javascript, HTML, CSS. I am
+            technology enthusiast, loves to learn new things.
           </p>
         </div>
         <section className="font-alcatraz mb-10 mt-2 w-full pt-2 text-center text-2xl">
