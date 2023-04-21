@@ -4,10 +4,14 @@ import { PageSEO } from "@/components/PageSEO";
 import myTechStack from "@/data/myTechStack";
 import TechStack from "@/components/TechStack";
 import experienceData from "@/data/experienceData";
+import { useEffect, useState } from "react";
+import { Router } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [count, setCount] = useState(0);
+
   return (
     <>
       <PageSEO
