@@ -19,7 +19,6 @@
     "axios": "^1.3.6",
     "next": "13.3.0",
     "next-themes": "^0.2.1",
-    "node-telegram-bot-api": "^0.61.0",
     "postcss": "^8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -28,7 +27,6 @@
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^0.9.0",
-    "@types/node-telegram-bot-api": "^0.61.6",
     "vercel": "^28.20.0"
   },
   "browser": {

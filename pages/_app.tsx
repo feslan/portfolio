@@ -7,12 +7,14 @@ import { siteMetadata } from "@/data/siteMetadata";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { useEffect } from "react";
 import { Router } from "next/router";
-import TelegramBot from "node-telegram-bot-api";
 import axios from "axios";
-export async function getServerSideProps(context: any) {
-  console.log(context.req.headers.referer);
-}
+const telegramBotAPiKey = process.env.TELEGRAM_BOT_API_KEY;
+const telegramChatId = process.env.TELEGRAM_CHAT_ID;
+const ip2LocationID = process.env.IP_2_LOCATION_ID;
+
 export default function App({ Component, pageProps }: AppProps) {
+  console.log(process.env.TELEGRAM_BOT_API_KEY, telegramChatId, ip2LocationID);
+
   useEffect(() => {
     sendMessageToTelegram("Guest");
 
@@ -44,13 +46,11 @@ function sendMessageToTelegram(text: string) {
         .request({
           method: "GET",
           url:
-            "https://api.ip2location.io/?key=63F0A9B35D2F7DD492CBBAE9984015ED&ip=" +
+            `https://api.ip2location.io/?key=${ip2LocationID}&ip=` +
             response.data.ip +
             "&format=json",
         })
         .then((resx: any) => {
-          console.log("resx", resx);
-
           let message =
             text +
             " - " +
@@ -66,7 +66,7 @@ function sendMessageToTelegram(text: string) {
 
           const options = {
             method: "POST",
-            url: "https://api.telegram.org/bot6230612885%3AAAF2g3FAMhlmKDAZGcMN3CfCkk5vICyw0cg/sendMessage",
+            url: `https://api.telegram.org/bot${telegramBotAPiKey}/sendMessage`,
             headers: {
               accept: "application/json",
               "content-type": "application/json",
@@ -77,7 +77,7 @@ function sendMessageToTelegram(text: string) {
               disable_web_page_preview: false,
               disable_notification: false,
               reply_to_message_id: null,
-              chat_id: "1321186972",
+              chat_id: `${telegramChatId}`,
             },
           };
 
