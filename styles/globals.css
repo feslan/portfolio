@@ -58,3 +58,14 @@ input:-webkit-autofill:focus {
 .dot-parent:hover .dot {
   visibility: visible !important;
 }
+
+footer svg {
+  @apply fill-current text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 cursor-pointer;
+}
+
+footer svg {
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  min-width: 32px;
+}

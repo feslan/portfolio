@@ -13,9 +13,11 @@ export const siteMetadata = {
   email: "aslanferhat16@gmail.com",
   github: "https://github.com/ferhat-aslan",
   twitter: "https://twitter.com/feslan_",
-  facebook: "https://facebook.com",
+  facebook: "https://www.facebook.com/profile.php?id=100014640552653",
   youtube: "https://youtube.com",
   linkedin: "https://www.linkedin.com/in/aslanferhat",
+  instagram: "https://www.instagram.com/ferhataslan027",
+
   locale: "en-US",
   analytics: {
     // If you want to use an analytics provider you have to add it to the

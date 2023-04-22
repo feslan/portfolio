@@ -3,6 +3,8 @@ import { PageSEO } from "@/components/PageSEO";
 import myTechStack from "@/data/myTechStack";
 import TechStack from "@/components/TechStack";
 import experienceData from "@/data/experienceData";
+import { socialLinks } from "@/data/socialLinks";
+import Link from "next/link";
 
 export default function Home() {
   return (

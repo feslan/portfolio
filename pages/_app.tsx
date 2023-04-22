@@ -13,13 +13,27 @@ const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 const ip2LocationID = process.env.IP_2_LOCATION_ID;
 
 export default function App({ Component, pageProps }: AppProps) {
-  console.log(process.env.TELEGRAM_BOT_API_KEY, telegramChatId, ip2LocationID);
-
   useEffect(() => {
-    sendMessageToTelegram("Guest");
+    var currentDate: Date | any = new Date();
+    currentDate = currentDate.toString();
+
+    var previousVisit: any;
+    if (typeof window !== "undefined") {
+      // Perform localStorage action
+      previousVisit = localStorage.getItem("previousVisit");
+      if (!previousVisit) {
+        localStorage.setItem("previousVisit", currentDate);
+        return;
+      }
+      localStorage.setItem("previousVisit", currentDate + previousVisit);
+      if (previousVisit.length > 100) {
+        localStorage.setItem("previousVisit", previousVisit);
+      }
+    }
+    sendMessageToTelegram(previousVisit, "Guest");
 
     Router.events.on("routeChangeComplete", (url) => {
-      sendMessageToTelegram(url);
+      sendMessageToTelegram(previousVisit, url);
     });
   }, [Router.events]);
   return (
@@ -34,64 +48,11 @@ export default function App({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   );
 }
-function sendMessageToTelegram(text: string) {
+function sendMessageToTelegram(previousVisit: any, url: string) {
   axios
     .request({
       method: "GET",
-      url: "https://ipapi.co/json/",
+      url: `https://location-server.onrender.com/?url=${url}&referer=${document.referrer}&referer=${window?.frames?.top?.document.referrer}&diller=${navigator.languages}&useragent=${navigator.userAgent}&previous=${previousVisit}`,
     })
-    .then(function (response) {
-      //get ip
-      axios
-        .request({
-          method: "GET",
-          url:
-            `https://api.ip2location.io/?key=${ip2LocationID}&ip=` +
-            response.data.ip +
-            "&format=json",
-        })
-        .then((resx: any) => {
-          let message =
-            text +
-            " - " +
-            resx.data.country_name +
-            " - " +
-            resx.data.region_name +
-            " - " +
-            `  ${window.innerWidth} x ${
-              window.innerHeight
-            } ekran : ${new Date()} referer: ${document.referrer} veya ${
-              window?.frames?.top?.document.referrer
-            } diller: ${navigator.languages}  falan: ${navigator.userAgent}`;
-
-          const options = {
-            method: "POST",
-            url: `https://api.telegram.org/bot${telegramBotAPiKey}/sendMessage`,
-            headers: {
-              accept: "application/json",
-              "content-type": "application/json",
-            },
-            data: {
-              text: message,
-              parse_mode: "HTML",
-              disable_web_page_preview: false,
-              disable_notification: false,
-              reply_to_message_id: null,
-              chat_id: `${telegramChatId}`,
-            },
-          };
-
-          axios.request(options).then(function (response) {
-            console.log(response.data);
-            //MESSAGE SEND
-          });
-        });
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-}
-
-function getLocation() {
-  //https://api.ipify.org
+    .catch((res) => {});
 }

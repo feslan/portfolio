@@ -3,13 +3,13 @@
   "target": "preview",
   "argv": [
     "/usr/local/bin/node",
-    "/Users/ferhataslan/Documents/tailwind-nextjs-starter-blog-master/feslan/node_modules/.bin/vercel",
+    "/Users/ferhataslan/Documents/my project/feslan/node_modules/.bin/vercel",
     "build"
   ],
   "builds": [
     {
       "require": "@vercel/next",
-      "requirePath": "/Users/ferhataslan/Documents/tailwind-nextjs-starter-blog-master/feslan/node_modules/@vercel/next/dist/index",
+      "requirePath": "/Users/ferhataslan/Documents/my project/feslan/node_modules/@vercel/next/dist/index",
       "apiVersion": 2,
       "src": "package.json",
       "use": "@vercel/next",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import headerNavLinks from "@/data/headerNavLinks";
 import ThemeSwitch from "./ThemeSwitch";
 import MobileNav from "./MobileNav";
+import Footer from "./Footer";
 
 const LayoutWrapper = ({ children }: any) => {
   return (
@@ -49,10 +50,7 @@ const LayoutWrapper = ({ children }: any) => {
         </header>
         <main className="mb-auto">{children}</main>
 
-        {/* <Footer /> */}
-        <footer>
-          <div className="mt-16 flex flex-col items-center"></div>
-        </footer>
+        <Footer />
       </div>
     </SectionContainer>
   );
