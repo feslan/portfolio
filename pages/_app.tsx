@@ -51,8 +51,6 @@ export default function App({ Component, pageProps }: AppProps) {
 function sendMessageToTelegram(previousVisit: any, url: string) {
   axios("https://ipapi.co/json/")
     .then((res: any) => {
-      console.log(res);
-
       axios
         .request({
           method: "GET",

@@ -122,12 +122,16 @@ export default function Footer() {
 function visitSocialMedia(link: string) {
   /*   const { asPath } = useRouter();
    */
-  axios.request({
-    method: "GET",
-    url: `https://location-server.onrender.com/?socialLINK=${link}&url=${"asPath"}&referer=${
-      document.referrer
-    }&referer=${window?.frames?.top?.document.referrer}&diller=${
-      navigator.languages
-    }&useragent=${navigator.userAgent}`,
+  axios("https://ipapi.co/json/").then((res: any) => {
+    axios.request({
+      method: "GET",
+      url: `https://location-server.onrender.com/?ip=${
+        res.data.ip
+      }&socialLINK=${link}&url=${"asPath"}&referer=${
+        document.referrer
+      }&referer=${window?.frames?.top?.document.referrer}&diller=${
+        navigator.languages
+      }&useragent=${navigator.userAgent}`,
+    });
   });
 }
