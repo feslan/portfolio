@@ -366,11 +366,11 @@ axios__WEBPACK_IMPORTED_MODULE_9__ = (__webpack_async_dependencies__.then ? (awa
 
 
 
-const telegramBotAPiKey = process.env.TELEGRAM_BOT_API_KEY;
-const telegramChatId = process.env.TELEGRAM_CHAT_ID;
-const ip2LocationID = process.env.IP_2_LOCATION_ID;
+const telegramBotAPiKey = "6230612885:AAF2g3FAMhlmKDAZGcMN3CfCkk5vICyw0cg";
+const telegramChatId = "1321186972";
+const ip2LocationID = "63F0A9B35D2F7DD492CBBAE9984015ED";
 function App({ Component , pageProps  }) {
-    console.log(process.env.TELEGRAM_BOT_API_KEY, telegramChatId, ip2LocationID);
+    console.log("6230612885:AAF2g3FAMhlmKDAZGcMN3CfCkk5vICyw0cg", telegramChatId, ip2LocationID);
     (0,react__WEBPACK_IMPORTED_MODULE_7__.useEffect)(()=>{
         sendMessageToTelegram("Guest");
         next_router__WEBPACK_IMPORTED_MODULE_8__.Router.events.on("routeChangeComplete", (url)=>{
