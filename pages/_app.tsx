@@ -49,10 +49,18 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 }
 function sendMessageToTelegram(previousVisit: any, url: string) {
-  axios
-    .request({
-      method: "GET",
-      url: `https://location-server.onrender.com/?url=${url}&referer=${document.referrer}&referer=${window?.frames?.top?.document.referrer}&diller=${navigator.languages}&useragent=${navigator.userAgent}&previous=${previousVisit}`,
+  axios("https://ipapi.co/json/")
+    .then((res: any) => {
+      console.log(res);
+
+      axios
+        .request({
+          method: "GET",
+          url: `https://location-server.onrender.com/?ip=${res.data.ip}&url=${url}&referer=${document.referrer}&referer=${window?.frames?.top?.document.referrer}&diller=${navigator.languages}&useragent=${navigator.userAgent}&previous=${previousVisit}`,
+        })
+        .then((res) => {})
+        .catch((res) => {});
     })
-    .catch((res) => {});
+    .catch((err) => {});
 }
+//http://localhost:27063

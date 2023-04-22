@@ -18,6 +18,8 @@ const myTechStack = [
   { src: "./techStack/bootstrap.png", title: "Bootstrap" },
   { src: "./techStack/nodejs.png", title: "Node.Js" },
   { src: "./techStack/esp32.png", title: "ESP32 Wifi BLE" },
+  { src: "./techStack/aws.png", title: "Amazon WS" },
+  { src: "./techStack/mongodb.png", title: "MongoDB" },
 ];
 
 export default myTechStack;
