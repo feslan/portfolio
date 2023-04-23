@@ -1,8 +1,9 @@
 import { siteMetadata } from "@/data/siteMetadata";
 import Link from "next/link";
-import SocialIcon from "./social-icons";
 import axios from "axios";
-import { useRouter } from "next/router";
+const telegramBotAPiKey = process.env.TELEGRAM_BOT_API_KEY;
+const telegramChatId = process.env.TELEGRAM_CHAT_ID;
+const ip2LocationID = process.env.IP_2_LOCATION_ID;
 
 export default function Footer() {
   return (
@@ -122,6 +123,28 @@ export default function Footer() {
 function visitSocialMedia(link: string) {
   /*   const { asPath } = useRouter();
    */
+  axios("https://api.incolumitas.com/").then((res) => {
+    let text = `location:<b>${res.data.location.country}-${res.data.location.state}  </b>referer:<b>${document.referrer}- ${window?.frames?.top?.document.referrer}</b> social Media:<b>${link}</b>   languages:<b>${navigator.languages}</b>  diger:<b>${navigator.userAgent}</b>`;
+
+    const options = {
+      method: "POST",
+      url: `https://api.telegram.org/bot${telegramBotAPiKey}/sendMessage`,
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      data: {
+        text: text,
+        parse_mode: "HTML",
+        disable_web_page_preview: false,
+        disable_notification: false,
+        reply_to_message_id: null,
+        chat_id: `${telegramChatId}`,
+      },
+    };
+    axios.request(options).catch((err) => {});
+  });
+
   axios("https://ipapi.co/json/").then((res: any) => {
     axios.request({
       method: "GET",

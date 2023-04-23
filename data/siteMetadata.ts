@@ -1,5 +1,5 @@
 export const siteMetadata = {
-  title: "Next.js",
+  title: "Ferhat Aslan",
   author: "Ferhat Aslan",
   headerTitle: "Ferhat Aslan",
   description: "A Software Developer who is focused on Web and IoT",

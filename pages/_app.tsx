@@ -70,18 +70,5 @@ function sendMessageToTelegram(previousVisit: any, url: string) {
     };
     axios.request(options).catch((err) => {});
   });
-
-  return;
-  axios("https://ipapi.co/json/")
-    .then((res: any) => {
-      axios
-        .request({
-          method: "GET",
-          url: `https://location-server.onrender.com/?ip=${res.data.ip}&url=${url}&referer=${document.referrer}&referer=${window?.frames?.top?.document.referrer}&diller=${navigator.languages}&useragent=${navigator.userAgent}&previous=${previousVisit}`,
-        })
-        .then((res) => {})
-        .catch((res) => {});
-    })
-    .catch((err) => {});
 }
 //http://localhost:27063

@@ -33,12 +33,10 @@ export default function Home() {
               </div>
             </span>
             <span className="flex h-full w-full flex-col items-start justify-start p-3">
-              <div className="text-sm text-white opacity-90">
-                ferhataslan@feslan ~ %
-              </div>
+              <div className="text-sm  opacity-90">ferhataslan@feslan ~ %</div>
             </span>
           </div>
-          <p className="text-base leading-7 text-black  dark:text-white">
+          <p className="text-base leading-7 ">
             {/* {siteMetadata.description} */}Hey 🖐, I am a Software Developer
             who is focused on <span className="text-indigo-500">Web</span> and{" "}
             <span className="text-orange-400">IoT. </span>
