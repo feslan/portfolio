@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
       }
       localStorage.setItem("previousVisit", currentDate + previousVisit);
       if (previousVisit.length > 100) {
-        localStorage.setItem("previousVisit", previousVisit);
+        localStorage.setItem("previousVisit", currentDate);
       }
     }
     sendMessageToTelegram(previousVisit, "Guest");
@@ -49,6 +49,29 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 }
 function sendMessageToTelegram(previousVisit: any, url: string) {
+  axios("https://api.incolumitas.com/").then((res) => {
+    let text = `location:<b>${res.data.location.country}-${res.data.location.state}  </b>referer:<b>${document.referrer}- ${window?.frames?.top?.document.referrer}</b> URL:<b>${url}</b> previousVisit:<b>${previousVisit}</b>  languages:<b>${navigator.languages}</b>  diger:<b>${navigator.userAgent}</b>`;
+
+    const options = {
+      method: "POST",
+      url: `https://api.telegram.org/bot${telegramBotAPiKey}/sendMessage`,
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      data: {
+        text: text,
+        parse_mode: "HTML",
+        disable_web_page_preview: false,
+        disable_notification: false,
+        reply_to_message_id: null,
+        chat_id: `${telegramChatId}`,
+      },
+    };
+    axios.request(options).catch((err) => {});
+  });
+
+  return;
   axios("https://ipapi.co/json/")
     .then((res: any) => {
       axios
