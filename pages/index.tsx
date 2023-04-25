@@ -4,9 +4,25 @@ import myTechStack from "@/data/myTechStack";
 import TechStack from "@/components/TechStack";
 import experienceData from "@/data/experienceData";
 import { socialLinks } from "@/data/socialLinks";
-import Link from "next/link";
 
+import Link from "next/link";
+import { TextScramble } from "@/components/ScrambleText";
+const phrases = ["Ferhat Aslan", "Software Developer"];
 export default function Home() {
+  if (typeof document !== "undefined") {
+    const text = document.querySelector("#text");
+    console.log(text);
+    const fx = new TextScramble(text);
+
+    let counter = 0;
+    const next = () => {
+      fx.setText(phrases[counter]).then(() => {
+        setTimeout(next, 800);
+      });
+      counter = (counter + 1) % phrases.length;
+    };
+    next();
+  }
   return (
     <>
       <PageSEO
@@ -15,10 +31,10 @@ export default function Home() {
       />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="hidden bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text  text-3xl font-extrabold leading-9 tracking-tight text-transparent sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Ferhat Aslan
-          </h1>
-          <h1 className="animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-3xl  leading-9 tracking-tight text-transparent sm:text-4xl sm:leading-10 md:text-6xl md:leading-14   font-black ">
+          <h1
+            id="text"
+            className="animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-3xl  leading-9 tracking-tight text-transparent sm:text-4xl sm:leading-10 md:text-6xl md:leading-14   font-black "
+          >
             Ferhat Aslan
           </h1>
           <div className="terminal hidden min-h-[100px] w-full flex-col items-start justify-start rounded-lg bg-slate-800">
