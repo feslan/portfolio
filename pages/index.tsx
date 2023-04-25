@@ -3,13 +3,10 @@ import { PageSEO } from "@/components/PageSEO";
 import myTechStack from "@/data/myTechStack";
 import TechStack from "@/components/TechStack";
 import experienceData from "@/data/experienceData";
-import { socialLinks } from "@/data/socialLinks";
 
-import Link from "next/link";
-import { TextScramble } from "@/components/ScrambleText";
 const phrases = ["Ferhat Aslan", "Software Developer"];
 export default function Home() {
-  if (typeof document !== "undefined") {
+  /* if (typeof document !== "undefined") {
     const text = document.querySelector("#text");
     console.log(text);
     const fx = new TextScramble(text);
@@ -22,7 +19,7 @@ export default function Home() {
       counter = (counter + 1) % phrases.length;
     };
     next();
-  }
+  } */
   return (
     <>
       <PageSEO
@@ -37,7 +34,7 @@ export default function Home() {
           >
             Ferhat Aslan
           </h1>
-          <div className="terminal hidden min-h-[100px] w-full flex-col items-start justify-start rounded-lg bg-slate-800">
+          <div className="terminal * hidden * min-h-[100px] w-full flex-col items-start justify-start rounded-lg bg-slate-800">
             <span className="relative flex h-8 w-full items-center justify-start rounded-t-lg bg-black opacity-90">
               <div className="ml-3 flex flex-row gap-x-2">
                 <span className="h-3 w-3 rounded-full bg-[#f56565]"></span>
