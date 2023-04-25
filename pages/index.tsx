@@ -3,10 +3,13 @@ import { PageSEO } from "@/components/PageSEO";
 import myTechStack from "@/data/myTechStack";
 import TechStack from "@/components/TechStack";
 import experienceData from "@/data/experienceData";
+import { socialLinks } from "@/data/socialLinks";
 
+import Link from "next/link";
+import { TextScramble } from "@/components/ScrambleText";
 const phrases = ["Ferhat Aslan", "Software Developer"];
 export default function Home() {
-  /* if (typeof document !== "undefined") {
+  if (typeof document !== "undefined") {
     const text = document.querySelector("#text");
     console.log(text);
     const fx = new TextScramble(text);
@@ -19,7 +22,7 @@ export default function Home() {
       counter = (counter + 1) % phrases.length;
     };
     next();
-  } */
+  }
   return (
     <>
       <PageSEO
