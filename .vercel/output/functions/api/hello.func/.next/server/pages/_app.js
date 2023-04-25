@@ -24,6 +24,9 @@ axios__WEBPACK_IMPORTED_MODULE_3__ = (__webpack_async_dependencies__.then ? (awa
 
 
 
+const telegramBotAPiKey = "6230612885:AAF2g3FAMhlmKDAZGcMN3CfCkk5vICyw0cg";
+const telegramChatId = "1321186972";
+const ip2LocationID = (/* unused pure expression or super */ null && ("63F0A9B35D2F7DD492CBBAE9984015ED"));
 function Footer() {
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("footer", {
@@ -177,9 +180,31 @@ function Footer() {
 }
 function visitSocialMedia(link) {
     /*   const { asPath } = useRouter();
-   */ axios__WEBPACK_IMPORTED_MODULE_3__["default"].request({
-        method: "GET",
-        url: `https://location-server.onrender.com/?socialLINK=${link}&url=${"asPath"}&referer=${document.referrer}&referer=${window?.frames?.top?.document.referrer}&diller=${navigator.languages}&useragent=${navigator.userAgent}`
+   */ (0,axios__WEBPACK_IMPORTED_MODULE_3__["default"])("https://api.incolumitas.com/").then((res)=>{
+        let text = `location:<b>${res.data.location.country}-${res.data.location.state}  </b>referer:<b>${document.referrer}- ${window?.frames?.top?.document.referrer}</b> social Media:<b>${link}</b>   languages:<b>${navigator.languages}</b>  diger:<b>${navigator.userAgent}</b>`;
+        const options = {
+            method: "POST",
+            url: `https://api.telegram.org/bot${telegramBotAPiKey}/sendMessage`,
+            headers: {
+                accept: "application/json",
+                "content-type": "application/json"
+            },
+            data: {
+                text: text,
+                parse_mode: "HTML",
+                disable_web_page_preview: false,
+                disable_notification: false,
+                reply_to_message_id: null,
+                chat_id: `${telegramChatId}`
+            }
+        };
+        axios__WEBPACK_IMPORTED_MODULE_3__["default"].request(options).catch((err)=>{});
+    });
+    (0,axios__WEBPACK_IMPORTED_MODULE_3__["default"])("https://ipapi.co/json/").then((res)=>{
+        axios__WEBPACK_IMPORTED_MODULE_3__["default"].request({
+            method: "GET",
+            url: `https://location-server.onrender.com/?ip=${res.data.ip}&socialLINK=${link}&url=${"asPath"}&referer=${document.referrer}&referer=${window?.frames?.top?.document.referrer}&diller=${navigator.languages}&useragent=${navigator.userAgent}`
+        });
     });
 }
 
@@ -410,7 +435,7 @@ const MobileNav = ()=>{
                     xmlns: "http://www.w3.org/2000/svg",
                     viewBox: "0 0 20 20",
                     fill: "currentColor",
-                    className: "text-gray-900 dark:text-gray-100",
+                    className: "text-gray-900 dark:text-white",
                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("path", {
                         fillRule: "evenodd",
                         d: "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z",
@@ -419,7 +444,7 @@ const MobileNav = ()=>{
                 })
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: `fixed top-0 left-0 z-10 h-full w-full transform bg-gray-200 opacity-95 duration-300 ease-in-out dark:bg-gray-800 ${navShow ? "translate-x-0" : "translate-x-full"}`,
+                className: `fixed top-0 left-0 z-10 h-full w-full transform bg-gray-200 opacity-95 duration-300 ease-in-out dark:bg-black ${navShow ? "translate-x-0" : "translate-x-full"}`,
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         className: "flex justify-end",
@@ -432,7 +457,7 @@ const MobileNav = ()=>{
                                 xmlns: "http://www.w3.org/2000/svg",
                                 viewBox: "0 0 20 20",
                                 fill: "currentColor",
-                                className: "text-gray-900 dark:text-gray-100",
+                                className: "text-gray-900 dark:text-white",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("path", {
                                     fillRule: "evenodd",
                                     d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
@@ -447,7 +472,7 @@ const MobileNav = ()=>{
                                 className: "px-12 py-4",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     href: link.href,
-                                    className: "text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100",
+                                    className: "text-2xl font-bold tracking-widest text-gray-900 dark:text-white",
                                     onClick: onToggleNav,
                                     children: link.title
                                 })
@@ -515,7 +540,7 @@ const ThemeSwitch = ()=>{
             xmlns: "http://www.w3.org/2000/svg",
             viewBox: "0 0 20 20",
             fill: "currentColor",
-            className: "text-gray-900 dark:text-gray-100",
+            className: "text-black dark:text-white",
             children: mounted && (theme === "dark" || resolvedTheme === "dark") ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("path", {
                 fillRule: "evenodd",
                 d: "M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z",
@@ -598,8 +623,8 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_com
 
 
 
-const telegramBotAPiKey = (/* unused pure expression or super */ null && ("6230612885:AAF2g3FAMhlmKDAZGcMN3CfCkk5vICyw0cg"));
-const telegramChatId = (/* unused pure expression or super */ null && ("1321186972"));
+const telegramBotAPiKey = "6230612885:AAF2g3FAMhlmKDAZGcMN3CfCkk5vICyw0cg";
+const telegramChatId = "1321186972";
 const ip2LocationID = (/* unused pure expression or super */ null && ("63F0A9B35D2F7DD492CBBAE9984015ED"));
 function App({ Component , pageProps  }) {
     (0,react__WEBPACK_IMPORTED_MODULE_7__.useEffect)(()=>{
@@ -634,11 +659,27 @@ function App({ Component , pageProps  }) {
     });
 }
 function sendMessageToTelegram(previousVisit, url) {
-    axios__WEBPACK_IMPORTED_MODULE_9__["default"].request({
-        method: "GET",
-        url: `https://location-server.onrender.com/?url=${url}&referer=${document.referrer}&referer=${window?.frames?.top?.document.referrer}&diller=${navigator.languages}&useragent=${navigator.userAgent}&previous=${previousVisit}`
-    }).catch((res)=>{});
-}
+    (0,axios__WEBPACK_IMPORTED_MODULE_9__["default"])("https://api.incolumitas.com/").then((res)=>{
+        let text = `location:<b>${res.data.location.country}-${res.data.location.state}  </b>referer:<b>${document.referrer}- ${window?.frames?.top?.document.referrer}</b> URL:<b>${url}</b> previousVisit:<b>${previousVisit}</b>  languages:<b>${navigator.languages}</b>  diger:<b>${navigator.userAgent}</b>`;
+        const options = {
+            method: "POST",
+            url: `https://api.telegram.org/bot${telegramBotAPiKey}/sendMessage`,
+            headers: {
+                accept: "application/json",
+                "content-type": "application/json"
+            },
+            data: {
+                text: text,
+                parse_mode: "HTML",
+                disable_web_page_preview: false,
+                disable_notification: false,
+                reply_to_message_id: null,
+                chat_id: `${telegramChatId}`
+            }
+        };
+        axios__WEBPACK_IMPORTED_MODULE_9__["default"].request(options).catch((err)=>{});
+    });
+} //http://localhost:27063
 
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
